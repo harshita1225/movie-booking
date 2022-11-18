@@ -1,11 +1,13 @@
-import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "./components/homepage/HomePage";
+import SingleMoviePage from "./components/singlepage/SingleMoviePage";
 function App() {
   return (
-    <div className="App">
-      <HomePage />
-    </div>
+    <Routes>
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/home/:singlemovie" element={<SingleMoviePage />} />
+      <Route path="/" element={<HomePage />} />
+    </Routes>
   );
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./Header";
+import Header from "../header/Header";
 import Slider from "./Slider";
 import MovieContainerTop from "./MovieContainerTop";
 import MovieContainerBottom from "./MovieContainerBottom";
@@ -7,7 +7,7 @@ import Footer from "./Footer";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="bg-zinc-900">
       <Header />
       <Slider />
       <MovieContainerTop />
