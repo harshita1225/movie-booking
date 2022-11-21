@@ -10,9 +10,18 @@ export const oldMovies = [
     cast: "George Clooney, Julia Roberts, Billie Lourd ",
     poster:
       "https://regalcdn.azureedge.net/REG/TickettoParadise/HO00011075/TV_SmallPosterImage/20220803-144235370.jpg",
-    trailer:
-      "https://www.youtube.com/watch?v=e8iMZMucXyU&t=9s&ab_channel=Regal",
+    trailer: "e8iMZMucXyU",
     Director: "Ol Parker",
+
+    Date: [
+      { value: "28.11", time: ["11:30", "15:30", "18:00"] },
+      { value: "29.11", time: ["16:30", "18:00"] },
+      { value: "30.11", time: ["11:30", "18:00"] },
+      { value: "01.12", time: ["11:30", "13:15", "18:00"] },
+      { value: "02.12", time: ["11:30", "15:00"] },
+      { value: "03.12", time: ["11:30", "15:30", "19:00"] },
+      { value: "04.12", time: ["15:30", "18:00"] },
+    ],
   },
 
   {
@@ -26,8 +35,17 @@ export const oldMovies = [
     cast: "Nicholas Hoult, Ralph Fiennes, Anya Taylor-Joy, John Leguizamo, Judith Light, Hong Chau, Janet McTeer",
     poster:
       "https://regalcdn.azureedge.net/REG/MenuThe/HO00012763/TV_SmallPosterImage/20220916-093541305.jpg",
-    trailer: "https://www.youtube.com/watch?v=sLH7_W0XQRw",
+    trailer: "sLH7_W0XQRw",
     Director: "Mark Mylod",
+    Date: [
+      { value: "28.11", time: ["12:30", "18:00"] },
+      { value: "29.11", time: ["10:30", "14:00"] },
+      { value: "30.11", time: ["11:30"] },
+      { value: "01.12", time: ["12:15", "19:00"] },
+      { value: "02.12", time: ["09:30", "17:00"] },
+      { value: "03.12", time: ["11:30", "14:30", "19:00"] },
+      { value: "04.12", time: ["15:30", "19:00", "22:00"] },
+    ],
   },
 
   {
@@ -42,8 +60,18 @@ export const oldMovies = [
     cast: "Carey Mulligan, Patricia Clarkson, Tom Pelphrey, Samantha Morton, Zoe Kazan, Andre Braugher ",
     poster:
       "https://regalcdn.azureedge.net/REG/SheSaid/HO00012765/TV_SmallPosterImage/20220721-113616359.jpg",
-    trailer: "https://www.youtube.com/watch?v=sfjZJYZkgRY",
+    trailer: "sfjZJYZkgRY",
     Director: "Maria Schrader ",
+
+    Date: [
+      { value: "28.11", time: ["14:00"] },
+      { value: "29.11", time: ["09:45", "16:00"] },
+      { value: "30.11", time: ["12:30"] },
+      { value: "01.12", time: ["10:15", "17:00"] },
+      { value: "02.12", time: ["12:30", "17:00"] },
+      { value: "03.12", time: ["09:30", "16:30", "20:00"] },
+      { value: "04.12", time: ["18:30", "20:00", "22:00"] },
+    ],
   },
 
   {
@@ -57,8 +85,17 @@ export const oldMovies = [
     cast: " Martin Freeman, Lupita Nyong'o, Angela Bassett, Winston Duke, Danai Gurira, Letitia Wright, Tenoch Huerta  ",
     poster:
       "https://regalcdn.azureedge.net/REG/BlackPantherWakandaForever/HO00010981/TV_SmallPosterImage/20221003-090939915.jpg",
-    trailer: "https://www.youtube.com/watch?v=7xByjJrQSkM&t=1s",
+    trailer: "7xByjJrQSkM",
     Director: "Ryan Coogler ",
+    Date: [
+      { value: "28.11", time: ["10:30", "15:30", "19:00"] },
+      { value: "29.11", time: ["14:30", "17:00"] },
+      { value: "30.11", time: ["12:30", "15:00"] },
+      { value: "01.12", time: ["15:30", "18:15", "20:00"] },
+      { value: "02.12", time: ["11:30"] },
+      { value: "03.12", time: ["11:30", "19:00"] },
+      { value: "04.12", time: ["15:30", "20:00"] },
+    ],
   },
 
   {
@@ -72,9 +109,17 @@ export const oldMovies = [
     cast: "Hector P. Valenti,Benj Pasek",
     poster:
       "https://regalcdn.azureedge.net/REG/LyleLyleCrocodile/HO00011220/TV_SmallPosterImage/20220810-091655259.jpg",
-    trailer:
-      "https://regalcdn.azureedge.net/REG/LyleLyleCrocodile/HO00011220/TV_SmallPosterImage/20220810-091655259.jpg",
+    trailer: "uiQL0ETb8WY",
     Director: "Josh Gordon, Will Speck ",
+    Date: [
+      { value: "28.11", time: ["15:30", "18:00"] },
+      { value: "29.11", time: ["16:30", "18:00"] },
+      { value: "30.11", time: ["11:30", "12:00"] },
+      { value: "01.12", time: ["11:30", "13:15", "18:00"] },
+      { value: "02.12", time: ["10:30", "15:00"] },
+      { value: "03.12", time: ["12:30", "15:30", "19:00", "20:00"] },
+      { value: "04.12", time: ["09:30", "15:30", "18:00", "20:00"] },
+    ],
   },
 
   {
@@ -88,8 +133,18 @@ export const oldMovies = [
     cast: "Christoph Waltz, Ewan McGregor, Tilda Swinton, Ron Perlman, Finn Wolfhard, David Bradley, Gregory Mann ",
     poster:
       "https://regalcdn.azureedge.net/REG/GuillermodelTorosPinocchio/HO00013493/TV_SmallPosterImage/20221102-184047585.jpg",
-    trailer: "https://www.youtube.com/watch?v=qRDtxJMb9rE&feature=emb_logo",
+    trailer: "qRDtxJMb9rE",
     Director: "Guillermo del Toro, Mark Gustafson",
+
+    Date: [
+      { value: "28.11", time: ["09:30", "12:30", "16:00"] },
+      { value: "29.11", time: ["14:30", "15:00"] },
+      { value: "30.11", time: ["15:30"] },
+      { value: "01.12", time: ["13:15", "18:00"] },
+      { value: "02.12", time: ["12:30", "15:00", "19:00"] },
+      { value: "03.12", time: ["11:50", "15:30", "22:00"] },
+      { value: "04.12", time: ["17:30", "21:00"] },
+    ],
   },
 
   {
@@ -103,8 +158,17 @@ export const oldMovies = [
     cast: "Virginia Madsen, Colin Salmon, Nicholas Ralph, Ben Cross, Jacqueline Byers, Lisa Palfrey, Christian Navarro ",
     poster:
       "https://regalcdn.azureedge.net/REG/PreyForTheDevil/HO00010846/TV_SmallPosterImage/20220718-114947553.jpg",
-    trailer: "https://www.youtube.com/watch?v=avvpO7Is_eI&feature=emb_logo",
+    trailer: "avvpO7Is_eI",
     Director: "Daniel Stamm ",
+    Date: [
+      { value: "28.11", time: ["10:30", "15:30"] },
+      { value: "29.11", time: ["10:30", "14:30", "18:00"] },
+      { value: "30.11", time: ["11:00", "18:00"] },
+      { value: "01.12", time: ["09:00", "13:00", "15:00"] },
+      { value: "02.12", time: ["15:30", "18:30"] },
+      { value: "03.12", time: ["13:30", "17:30", "19:00"] },
+      { value: "04.12", time: ["10:00"] },
+    ],
   },
 
   {
@@ -118,8 +182,17 @@ export const oldMovies = [
     cast: "Colin Farrell, Brendan Gleeson, Kerry Condon, Barry Keoghan ",
     poster:
       "https://regalcdn.azureedge.net/REG/BansheesofInisherinThe/HO00012978/TV_SmallPosterImage/20220804-093518899.jpg",
-    trailer: "https://www.youtube.com/watch?v=w7R3HqqZ09k",
+    trailer: "w7R3HqqZ09k",
     Director: "Martin McDonagh",
+    Date: [
+      { value: "28.11", time: ["11:30", "14:00"] },
+      { value: "29.11", time: ["16:00", "20:00"] },
+      { value: "30.11", time: ["13:30", "19:00", "22:00"] },
+      { value: "01.12", time: ["11:30", "15:15", "18:00"] },
+      { value: "02.12", time: ["11:30", "16:00"] },
+      { value: "03.12", time: ["11:00", "15:30", "19:00"] },
+      { value: "04.12", time: ["12:30", "20:00"] },
+    ],
   },
 ];
 
@@ -135,7 +208,7 @@ export const newMovies = [
     cast: "Raffey Cassidy, Greta Gerwig, Adam Driver, Alessandro Nivola, Jodie Turner-Smith, Don Cheadle, Andre Benjamin ",
     poster:
       "https://regalcdn.azureedge.net/REG/WhiteNoise/HO00013536/TV_SmallPosterImage/20221117-084044729.jpg",
-    trailer: "https://www.youtube.com/watch?v=FqJD7ae11mU",
+    trailer: "FqJD7ae11mU",
     Director: "Noah Baumbach",
   },
   {
@@ -149,7 +222,7 @@ export const newMovies = [
     cast: "Emma Stone, Brad Pitt ",
     poster:
       "https://regalcdn.azureedge.net/REG/Babylon/HO00010964/TV_SmallPosterImage/20220913-092008698.jpg",
-    trailer: "https://www.youtube.com/watch?v=jIP1zSUAvss",
+    trailer: "jIP1zSUAvss",
     Director: "Damien Chazelle ",
   },
   {
@@ -163,7 +236,7 @@ export const newMovies = [
     cast: "Jim Parsons, Sally Field, Bill Irwin, Ben Aldridge, Antoni Porowski, Nikki M. James, Jeffery Self ",
     poster:
       "https://regalcdn.azureedge.net/REG/SpoilerAlert/HO00013362/TV_SmallPosterImage/20221017-110612542.jpg",
-    trailer: "https://www.youtube.com/watch?v=06fl9PGFQJQ&t=3s",
+    trailer: "06fl9PGFQJQ",
     Director: "Michael Showalter ",
   },
   {
@@ -177,7 +250,7 @@ export const newMovies = [
     cast: "Antonio Banderas  ",
     poster:
       "https://regalcdn.azureedge.net/REG/PussinBootsTheLastWish/HO00011016/TV_SmallPosterImage/20220615-134344011.jpg",
-    trailer: "https://www.youtube.com/watch?v=3_Zorm-A4HE",
+    trailer: "3_Zorm-A4HE",
     Director: "Joel Crawford ",
   },
   {
@@ -190,7 +263,7 @@ export const newMovies = [
     cast: "Kate Winslet, Zoe Saldana, David Thewlis, Cliff Curtis, Stephen Lang, Sigourney Weaver, Sam Worthington, Oona Chaplin, Giovanni Ribisi, Edie Falco, Joel David Moore  ",
     poster:
       "https://regalcdn.azureedge.net/REG/AvatarTheWayofWater/HO00011715/TV_SmallPosterImage/20221102-083930427.jpg",
-    trailer: "https://www.youtube.com/watch?v=oCurvd4saok",
+    trailer: "oCurvd4saok",
     Director: "James Cameron ",
   },
   {
@@ -204,7 +277,7 @@ export const newMovies = [
     cast: "Mark Wahlberg, Mel Gibson, Jacki Weaver, Teresa Ruiz  ",
     poster:
       "https://regalcdn.azureedge.net/REG/FatherStuReborn/HO00013494/TV_SmallPosterImage/20221109-082732417.jpg",
-    trailer: "",
+    trailer: "lZSaJ5K0M2A",
     Director: "Rosalind Ross ",
   },
   {
@@ -218,7 +291,7 @@ export const newMovies = [
     cast: "Colin Farrell, Brendan Gleeson, Kerry Condon, Barry Keoghan ",
     poster:
       "https://regalcdn.azureedge.net/REG/EmpireOfLight/HO00012911/TV_SmallPosterImage/20221114-121146085.jpg",
-    trailer: "https://www.youtube.com/watch?v=cIWIjAwEs64",
+    trailer: "cIWIjAwEs64",
     Director: "Sam Mendes ",
   },
   {
@@ -232,7 +305,7 @@ export const newMovies = [
     cast: "Stanley Tucci, Ashton Sanders, Clarke Peters, Tamara Tunie, Naomi Ackie ",
     poster:
       "https://regalcdn.azureedge.net/REG/IWannaDanceWithSomebody/HO00012760/TV_SmallPosterImage/20220627-143107075.jpg",
-    trailer: "https://www.youtube.com/watch?v=_4cpi3RQuz4&t=3s",
+    trailer: "_4cpi3RQuz4",
     Director: "Kasi Lemmons ",
   },
 ];

@@ -3,13 +3,15 @@ import { createContext, useReducer } from "react";
 
 export const Context = createContext();
 
-const initialState = {};
+const initialState = {
+  genre: "",
+  datetime: "",
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "":
-      //console.log(action.payload);
-      return;
+    case "SELECT-DATE":
+      return { ...state, datetime: action.payload };
 
     default:
       return;

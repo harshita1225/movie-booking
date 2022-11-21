@@ -6,9 +6,17 @@ import { FaYoutube } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGooglePlusSquare } from "react-icons/fa";
 
+import footerImg from "../images/promotion.png";
+
 const Footer = () => {
   return (
-    <div className="w-screen h-[400px] mt-[150px] flex flex-col text-white">
+    <div className="w-[1300px] h-[800px] mt-[150px] flex flex-col mx-auto text-white">
+      <div className="flex flex-col items-center mb-10">
+        <h2 className="text-white text-[20px] text-center border-b-2 border-b-orange-400 mb-5 p-3">
+          PROMOTION
+        </h2>
+        <img style={{ width: "700px" }} src={footerImg} alt="promotion" />
+      </div>
       <div className="w-[1000px] mx-auto">
         <div className="flex justify-between">
           <div>
@@ -53,6 +61,7 @@ const Footer = () => {
           <img
             style={{ width: "50px" }}
             src="https://now.symassets.com/content/dam/norton/global/images/non-product/logos/norton_logo.png"
+            alt="logo"
           />
         </div>
         <div> PRIVACY POLICY</div>

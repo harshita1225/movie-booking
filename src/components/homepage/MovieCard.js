@@ -71,7 +71,6 @@ export default function DribbbleShotold({ item }) {
               >
                 <Link
                   href={`/home/${item.id}`}
-                  overlay
                   underline="none"
                   sx={{
                     color: "black",
@@ -94,8 +93,7 @@ export default function DribbbleShotold({ item }) {
                 }}
               >
                 <Link
-                  href={`/home/${item.id}`}
-                  overlay
+                  href={`/datetime/${item.id}`}
                   underline="none"
                   sx={{
                     color: "black",

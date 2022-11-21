@@ -56,15 +56,12 @@ export default function DribbbleShot({ item }) {
             <Box
               sx={{
                 display: "flex",
-                alignItems: "center",
-                flexGrow: 1,
+                justifyItems: "center",
                 alignSelf: "flex-end",
-                justifyContent: "space-between",
               }}
             >
               <Typography
                 level="h2"
-                noWrap
                 sx={{
                   fontSize: "sm",
                 }}
@@ -86,7 +83,7 @@ export default function DribbbleShot({ item }) {
                 </Link>
               </Typography>
 
-              <Typography
+              {/* <Typography
                 level="h2"
                 noWrap
                 sx={{
@@ -108,7 +105,7 @@ export default function DribbbleShot({ item }) {
                 >
                   Play trailer
                 </Link>
-              </Typography>
+              </Typography> */}
             </Box>
           </Box>
         </CardCover>
