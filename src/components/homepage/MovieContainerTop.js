@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import MovieCard from "../homepage/MovieCard";
 import { oldMovies } from "../localdata/LocalData";
-
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -12,10 +11,26 @@ const MovieContainerTop = () => {
 
   const handleChange = (event) => {
     setGenre(event.target.value);
+    // dispatch({ type: "genre", payload: genre });
   };
+  const filteredArray = oldMovies.filter((item) => item.genre.includes(genre));
+  console.log(filteredArray);
+
+  /* function getFilteredList() {
+    if (genre === "") {
+      return oldMovies;
+    }
+    return oldMovies.filter((item) => item.genre.includes(genre));
+  }
+  console.log(genre);
+  console.log(oldMovies);
+
+  /*  // Avoid duplicate function calls with useMemo
+ // let filteredList = useMemo(getFilteredList, [genre, oldMovies]); */
+
   return (
     <div className="flex flex-col gap-5 w-[1300px] mx-auto mt-[100px]">
-      <div className="text-white text-[22px] tracking-wider rounded-full  flex items-center justify-between px-7">
+      <div className="text-white text-[22px] tracking-wider rounded-full  flex items-center justify-between px-7 ">
         <div>NOW SHOWING</div>
         <div>
           <FormControl
@@ -23,10 +38,14 @@ const MovieContainerTop = () => {
               m: 1,
               minWidth: 100,
               zIndex: "5",
-              background: "white",
+              padding: "5",
+              background: "orange",
             }}
           >
-            <InputLabel id="demo-simple-select-autowidth-label">
+            <InputLabel
+              style={{ color: "black" }}
+              id="demo-simple-select-autowidth-label"
+            >
               Genre
             </InputLabel>
             <Select
@@ -51,9 +70,9 @@ const MovieContainerTop = () => {
       </div>
 
       <div className="flex flex-wrap gap-5 justify-center">
-        {oldMovies.map((item, i) => (
-          <MovieCard width={300} item={item} key={i} />
-        ))}
+        {genre
+          ? filteredArray.map((el) => <MovieCard item={el} width={300} />)
+          : oldMovies.map((item) => <MovieCard width={300} item={item} />)}
       </div>
     </div>
   );

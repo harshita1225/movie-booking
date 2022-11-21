@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 
+import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -15,6 +16,9 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+import { oldMovies } from "../localdata/LocalData";
+import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -65,6 +69,9 @@ const darkTheme = createTheme({
 });
 
 export default function PrimarySearchAppBar() {
+  const navigate = useNavigate();
+  const [results, setResults] = useState({ id: "", name: "" });
+  const [selectedProfile, setSelectedProfile] = useState({ id: "", name: "" });
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -86,6 +93,9 @@ export default function PrimarySearchAppBar() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+  const handleLogin = () => {
+    navigate("/login");
   };
 
   const menuId = "primary-search-account-menu";
@@ -127,26 +137,6 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      {/* <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -162,59 +152,65 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
+  const changeHandler = (e) => {
+    if (!e.target.value.trim()) return setResults([]);
+
+    const filteredValue = oldMovies.filter((movie) =>
+      movie.title.toLowerCase().startsWith(e.target.value)
+    );
+    setResults(filteredValue);
+  };
+
+  //console.log(results);
   return (
     <ThemeProvider theme={darkTheme}>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
             <Typography
+              onClick={() => navigate("/home")}
               variant="h6"
               noWrap
               component="div"
-              sx={{ display: { xs: "none", sm: "block" }, mr: 5, ml: 3 }}
+              sx={{
+                display: { xs: "none", sm: "block" },
+                mr: 5,
+                ml: 3,
+                p: 1,
+                cursor: "pointer",
+              }}
             >
               <img
-                style={{ width: "50px", height: "50px" }}
+                style={{ width: "60px", height: "70px" }}
                 src="https://seeklogo.com/images/1/3d-cinema-logo-6981ACC37B-seeklogo.com.png"
                 alt="logo"
               />
             </Typography>
-            <Search>
+            <Search onChange={changeHandler}>
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search…"
+                placeholder="Search a movie…"
                 inputProps={{ "aria-label": "search" }}
               />
+              <div>
+                <ul>
+                  {!results &&
+                    results?.map((item, i) => <li>{item?.title}</li>)}
+                </ul>
+              </div>
             </Search>
+
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              {/* <IconButton
-                size="large"
-                aria-label="show 4 new mails"
-                color="inherit"
-              >
-                <Badge badgeContent={4} color="error">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge badgeContent={17} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton> */}
               <IconButton
                 size="large"
                 edge="end"
                 aria-label="account of current user"
                 aria-controls={menuId}
                 aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
+                onClick={handleLogin}
                 color="inherit"
               >
                 <AccountCircle />
@@ -236,7 +232,7 @@ export default function PrimarySearchAppBar() {
                 aria-label="show more"
                 aria-controls={mobileMenuId}
                 aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
+                onClick={handleProfileMenuOpen}
                 color="inherit"
               >
                 <MoreIcon />
@@ -244,7 +240,7 @@ export default function PrimarySearchAppBar() {
             </Box>
           </Toolbar>
         </AppBar>
-        {renderMobileMenu}
+
         {renderMenu}
       </Box>
     </ThemeProvider>
