@@ -5,14 +5,20 @@ export const Context = createContext();
 
 const initialState = {
   genre: "",
-  datetime: "",
+  date: "",
+  time: "",
+  jump: "#MovieContainerTop",
+  backgroundblur: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "SELECT-DATE":
-      return { ...state, datetime: action.payload };
-
+      return { ...state, date: action.payload };
+    case "SELECT-TIME":
+      return { ...state, time: action.payload };
+    case "BLUR-BACKGROUND":
+      return { ...state, backgroundblur: action.payload };
     default:
       return;
   }

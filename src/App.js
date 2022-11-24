@@ -5,6 +5,8 @@ import HomePage from "./components/homepage/HomePage";
 import LoginForm from "./components/login/LoginForm";
 import SingleMoviePage from "./components/singlepage/SingleMoviePage";
 import TermsandConditions from "./components/termsandcondition/TermsandConditions";
+import ConfirmationPage from "./components/booking/ConfirmationPage";
+import "./App.css";
 function App() {
   return (
     <Routes>
@@ -15,6 +17,7 @@ function App() {
       <Route path="/login" element={<LoginForm />} />
       <Route path="/seats" element={<Seat />} />
       <Route path="/terms" element={<TermsandConditions />} />
+      <Route path="/confirmation" element={<ConfirmationPage />} />
     </Routes>
   );
 }

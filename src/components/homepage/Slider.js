@@ -3,13 +3,14 @@ import Carousel from "react-material-ui-carousel";
 
 const Slider = () => {
   return (
-    <div className="w-full flex justify-center  h-[400px] mt-10 bg-black ">
+    <div className="w-full flex justify-center  h-[350px]">
       <Carousel
         interval={5000}
         sx={{
           width: "1400px",
-          height: "400px",
+          height: "350px",
           textAlign: "center",
+          zIndex: 0,
         }}
       >
         <img

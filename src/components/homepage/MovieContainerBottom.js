@@ -42,7 +42,7 @@ const MovieContainerBottom = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 w-[1300px] mx-auto mt-[150px]">
+    <div className="flex flex-col gap-5 w-[1300px] mx-auto mt-10">
       <div className="text-white text-[22px] tracking-wider p-5 rounded-full  flex ">
         <h2 className="text-white text-[22px] tracking-wider p-1 rounded-full  ">
           COMING SOON...

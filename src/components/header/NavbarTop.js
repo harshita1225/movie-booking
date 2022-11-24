@@ -1,17 +1,16 @@
 import React from "react";
-import { styled, alpha } from "@mui/material/styles";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
 
 import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
+
 import AccountCircle from "@mui/icons-material/AccountCircle";
 
 import MoreIcon from "@mui/icons-material/MoreVert";
@@ -19,46 +18,8 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import { oldMovies } from "../localdata/LocalData";
 import { useNavigate } from "react-router-dom";
+import AutoComplete from "./AutoComplete";
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-}));
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -152,15 +113,6 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-  const changeHandler = (e) => {
-    if (!e.target.value.trim()) return setResults([]);
-
-    const filteredValue = oldMovies.filter((movie) =>
-      movie.title.toLowerCase().startsWith(e.target.value)
-    );
-    setResults(filteredValue);
-  };
-
   //console.log(results);
   return (
     <ThemeProvider theme={darkTheme}>
@@ -186,21 +138,8 @@ export default function PrimarySearchAppBar() {
                 alt="logo"
               />
             </Typography>
-            <Search onChange={changeHandler}>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search a movie…"
-                inputProps={{ "aria-label": "search" }}
-              />
-              <div>
-                <ul>
-                  {!results &&
-                    results?.map((item, i) => <li>{item?.title}</li>)}
-                </ul>
-              </div>
-            </Search>
+
+            <AutoComplete></AutoComplete>
 
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>

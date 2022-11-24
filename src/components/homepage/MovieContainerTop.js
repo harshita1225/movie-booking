@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import MovieCard from "../homepage/MovieCard";
 import { oldMovies } from "../localdata/LocalData";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Box from "@mui/material/Box";
+import NativeSelect from "@mui/material/NativeSelect";
 
 const MovieContainerTop = () => {
   const [genre, setGenre] = useState("");
@@ -29,25 +31,25 @@ const MovieContainerTop = () => {
  // let filteredList = useMemo(getFilteredList, [genre, oldMovies]); */
 
   return (
-    <div className="flex flex-col gap-5 w-[1300px] mx-auto mt-[100px]">
-      <div className="text-white text-[22px] tracking-wider rounded-full  flex items-center justify-between px-7 ">
+    <div className="flex flex-col gap-1 w-[1300px] mx-auto">
+      <div className="text-white text-[22px] tracking-wider rounded-full  flex items-center justify-between px-3 mt-[75px] mb-2">
         <div>NOW SHOWING</div>
-        <div>
+        <div className="bg-orange-500 text-white">
           <FormControl
             sx={{
-              m: 1,
               minWidth: 100,
+              height: 55,
               zIndex: "5",
-              padding: "5",
-              background: "orange",
+              color: "white",
             }}
           >
             <InputLabel
-              style={{ color: "black" }}
+              sx={{ color: "white", background: "#F97316" }}
               id="demo-simple-select-autowidth-label"
             >
               Genre
             </InputLabel>
+
             <Select
               labelId="demo-simple-select-autowidth-label"
               id="demo-simple-select-autowidth"

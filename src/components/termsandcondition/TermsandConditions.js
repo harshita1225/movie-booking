@@ -1,24 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import cares from "../images/cares.png";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { Context } from "../../context/Context";
 
 const TermsandCoditions = () => {
+  const { dispatch } = useContext(Context);
   return (
-    <div className="section w-full h-screen flex justify-center items-center bg-black bg-opacity-70">
-      <div className="w-[990px] h-[690px]">
-        <div className="w-full h-[50px] text-[35px]  bg-zinc-300 flex justify-between px-10">
-          <p className="flex items-center px-4">Terms & Conditions</p>
+    <div className="section w-full h-screen flex justify-center items-center text-white absolute z-10">
+      <div className="terms w-[990px] h-[490px] border-2 border-black">
+        <div className="w-full h-[50px] text-[30px]  flex justify-between">
+          <p className="w-full px-4 text-center">Terms & Conditions</p>
           <p
             className=" flex items-center cursor-pointer"
-            onClick={(e) => e.target.closest(".section").remove()}
+            onClick={(e) => {
+              //console.log("blur background");
+              dispatch({ type: "", payload: false });
+              e.target.closest(".section").remove();
+            }}
           >
             <AiOutlineCloseCircle />
           </p>
         </div>
-        <div>
-          <img src={cares} alt="cares" />
+        <div className="mb-3 flex justify-center">
+          <img
+            style={{ width: "100%", height: "120px" }}
+            src={cares}
+            alt="cares"
+          />
         </div>
-        <div className="bg-zinc-300 px-20 py-10">
+        <div className=" px-10">
           <ul>
             <li className="list-disc">
               Outside food & beverages are not allowed in the cinema premises.
@@ -60,14 +70,6 @@ const TermsandCoditions = () => {
             <li className="list-disc">
               Decision(s) taken by PVR shall be final and binding, Rights of
               admission reserved.
-            </li>
-            <li className="list-disc">
-              PVR may contact the guest to seek feedback for service
-              improvement.
-            </li>
-            <li className="list-disc">
-              Ticket prices are subject to change without any prior
-              notification.{" "}
             </li>
           </ul>
         </div>
