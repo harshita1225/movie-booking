@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: rgb(24 24 27);
+}
+/* .seat:hover {
+  background: linear-gradient(
+    to top,
+    #ffce26,
+    #ffce26,
+    #ffce26,
+    orange
+  ) !important;
+} */
+
+/* .seat:hover {
+  background: linear-gradient(
+    to top,
+    rgb(254, 240, 138),
+    rgb(250, 204, 21),
+    rgb(161, 98, 7)
+  ) !important;
+} */
+
+.seat:hover {
+  background: linear-gradient(
+    to right bottom,
+    rgb(202, 138, 4),
+    rgb(220, 38, 38)
+  ) !important;
+}
+
+.terms {
+  background: #191919;
+}

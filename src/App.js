@@ -5,8 +5,13 @@ import HomePage from "./components/homepage/HomePage";
 import LoginForm from "./components/login/LoginForm";
 import SingleMoviePage from "./components/singlepage/SingleMoviePage";
 import TermsandConditions from "./components/termsandcondition/TermsandConditions";
+<<<<<<< HEAD
+import ConfirmationPage from "./components/booking/ConfirmationPage";
+import "./App.css";
+=======
 import Offers from "./components/offers/Offers";
 
+>>>>>>> c4b72dc313bb0a7272f4033437a65e2ebff92a9f
 function App() {
   return (
     <Routes>
@@ -17,7 +22,11 @@ function App() {
       <Route path="/login" element={<LoginForm />} />
       <Route path="/seats" element={<Seat />} />
       <Route path="/terms" element={<TermsandConditions />} />
+<<<<<<< HEAD
+      <Route path="/confirmation" element={<ConfirmationPage />} />
+=======
       <Route path="/offers" element={<Offers />} />
+>>>>>>> c4b72dc313bb0a7272f4033437a65e2ebff92a9f
     </Routes>
   );
 }

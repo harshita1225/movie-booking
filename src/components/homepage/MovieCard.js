@@ -14,7 +14,8 @@ export default function DribbbleShotold({ item }) {
     <Card
       sx={{
         color: "orange",
-        width: 300,
+        width: 200,
+        height: 360,
         padding: 1,
         bgcolor: "initial",
         boxShadow: "none",
@@ -39,7 +40,7 @@ export default function DribbbleShotold({ item }) {
         <CardCover
           className="gradient-cover"
           sx={{
-            marginTop: "-12rem",
+            marginTop: "-7rem",
             padding: "15px",
             "&:hover, &:focus-within": {
               opacity: 1,
@@ -56,17 +57,16 @@ export default function DribbbleShotold({ item }) {
               sx={{
                 display: "flex",
                 alignItems: "center",
+                gap: 2,
                 flexGrow: 1,
-
                 alignSelf: "flex-end",
-                justifyContent: "space-between",
               }}
             >
               <Typography
                 level="h2"
                 noWrap
                 sx={{
-                  fontSize: "lg",
+                  fontSize: "sm",
                 }}
               >
                 <Link
@@ -74,7 +74,7 @@ export default function DribbbleShotold({ item }) {
                   underline="none"
                   sx={{
                     color: "black",
-                    padding: "5px",
+                    padding: "2px",
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                     display: "block",
@@ -89,7 +89,7 @@ export default function DribbbleShotold({ item }) {
                 level="h2"
                 noWrap
                 sx={{
-                  fontSize: "lg",
+                  fontSize: "sm",
                 }}
               >
                 <Link
@@ -97,7 +97,7 @@ export default function DribbbleShotold({ item }) {
                   underline="none"
                   sx={{
                     color: "black",
-                    padding: "5px",
+                    padding: "2px",
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                     display: "block",
@@ -131,10 +131,10 @@ export default function DribbbleShotold({ item }) {
               "linear-gradient(180deg, transparent 62%, rgba(0,0,0,0.00345888) 63.94%, rgba(0,0,0,0.014204) 65.89%, rgba(0,0,0,0.0326639) 67.83%, rgba(0,0,0,0.0589645) 69.78%, rgba(0,0,0,0.0927099) 71.72%, rgba(0,0,0,0.132754) 73.67%, rgba(0,0,0,0.177076) 75.61%, rgba(0,0,0,0.222924) 77.56%, rgba(0,0,0,0.267246) 79.5%, rgba(0,0,0,0.30729) 81.44%, rgba(0,0,0,0.341035) 83.39%, rgba(0,0,0,0.367336) 85.33%, rgba(0,0,0,0.385796) 87.28%, rgba(0,0,0,0.396541) 89.22%, rgba(0,0,0,0.4) 91.17%)",
           }}
         >
-          <Typography sx={{ fontSize: "sm", fontWeight: "md" }}>
+          <Typography sx={{ fontSize: "12px", fontWeight: "md" }}>
             {item.title}
           </Typography>
-          <Typography sx={{ fontSize: "12px" }}>{item.releasedate}</Typography>
+          <Typography sx={{ fontSize: "10px" }}>{item.releasedate}</Typography>
         </div>
         <Chip
           variant="outlined"

@@ -101,7 +101,7 @@ export const oldMovies = [
   {
     id: 5,
     title: "Lyle, Lyle, Crocodile ",
-    releasedate: "07 October 2022",
+    releasedate: "07 November 2022",
     duration: 102,
     overview:
       "Based on the best-selling book series by Bernard Waber, Lyle, Lyle, Crocodile is a live-action/CGI musical comedy that brings this beloved character to a new, global audience. When the Primm family (Constance Wu, Scoot McNairy, Winslow Fegley) moves to New York City, their young son Josh struggles to adapt to his new school and new friends. All of that changes when he discovers Lyle - a singing crocodile (Shawn Mendes) who loves baths, caviar and great music-living in the attic of his new home. ",
@@ -150,7 +150,7 @@ export const oldMovies = [
   {
     id: 7,
     title: "Prey For The Devil",
-    releasedate: "28 October 2022",
+    releasedate: "28 November 2022",
     duration: 93,
     overview:
       "Sister Ann (Jacqueline Byers) believes she is answering a calling to be the first female exorcist… but who, or what, called her? In response to a global rise in demonic possessions, Ann seeks out a place at an exorcism school reopened by the Catholic Church. Until now these schools have only trained priests in the Rite of Exorcism – but a professor (Colin Salmon) recognizes Sister Ann’s gifts and agrees to train her. Thrust onto the spiritual frontline with fellow student Father Dante (Christian Navarro), Sister Ann finds herself in a battle for the soul of a young girl, who Sister Ann believes is possessed by the same demon that tormented her own mother years ago. Determined to root out the evil, Ann soon realizes the Devil has her right where he wants her. ",
@@ -174,7 +174,7 @@ export const oldMovies = [
   {
     id: 8,
     title: "The Banshees of Inisherin ",
-    releasedate: "21 October 2022",
+    releasedate: "31 October 2022",
     duration: 144,
     overview:
       "A pair of lifelong friends on a remote Irish island find themselves at an awkward time in their relationship when one of them no longer wants to be friends.",
@@ -192,6 +192,99 @@ export const oldMovies = [
       { value: "02.12", time: ["11:30", "16:00"] },
       { value: "03.12", time: ["11:00", "15:30", "19:00"] },
       { value: "04.12", time: ["12:30", "20:00"] },
+    ],
+  },
+  {
+    id: 9,
+    title: "Strange World ",
+    releasedate: "11 November 2022",
+    duration: 102,
+    overview:
+      "The legendary Clades are a family of explorers whose differences threatened to topple their latest and most crucial mission.",
+    genre: ["Kids"],
+    cast: "Alan Tudyk",
+    poster:
+      "https://regalcdn.azureedge.net/REG/StrangeWorld/HO00012674/TV_SmallPosterImage/20220921-092143993.jpg",
+    trailer: "3zGxHRCZsVs",
+    Director: "Don Hall",
+    Date: [
+      { value: "28.11", time: ["9:30", "11:00", "18:00"] },
+      { value: "29.11", time: ["16:00", "20:00"] },
+      { value: "30.11", time: ["16:30", "19:00", "22:00"] },
+      { value: "01.12", time: ["12:30", "15:15", "18:00"] },
+      { value: "02.12", time: ["11:30", "16:00"] },
+      { value: "03.12", time: ["11:30", "19:00"] },
+      { value: "04.12", time: ["12:30", "14:00"] },
+    ],
+  },
+
+  {
+    id: 10,
+    title: "Devotion ",
+    releasedate: "23 November 2022",
+    duration: 139,
+    overview:
+      "Devotion, an aerial war epic based on the bestselling book of the same name, tells the harrowing true story of two elite US Navy fighter pilots during the Korean War. Their heroic sacrifices would ultimately make them the Navy's most celebrated wingmen",
+    genre: ["Action"],
+    cast: "Jonathan Majors, Thomas Sadoski, Glen Powell, Joe Jonas, Spencer Neville",
+    poster:
+      "https://regalcdn.azureedge.net/REG/Devotion/HO00012759/TV_SmallPosterImage/20220801-120420592.jpg",
+    trailer: "wFTgTb9KxRI",
+    Director: "J.D. Dillard",
+    Date: [
+      { value: "28.11", time: ["15:00"] },
+      { value: "29.11", time: ["16:00", "20:00"] },
+      { value: "30.11", time: ["22:00"] },
+      { value: "01.12", time: ["11:15", "18:00"] },
+      { value: "02.12", time: ["14:30"] },
+      { value: "03.12", time: ["23:00"] },
+      { value: "04.12", time: ["12:30", "22:00"] },
+    ],
+  },
+  {
+    id: 11,
+    title: "The Chosen",
+    releasedate: "05 November 2022",
+    duration: 150,
+    overview:
+      "What now? After Jesus completes a sermon that turns the world upside down, all 12 disciples (including newcomer Judas) are ready to follow him to the ends of the earth. But problems remain. Matthew wrestles with estrangement from his family. Andrew visits an imprisoned John the Baptist. Mary and the women must find a source of income.",
+    genre: ["Drama"],
+    cast: "Jonathan Roumie, Shahar Issac, Noah James, Liz Tabish, Paras Patel, George H. Xanthis",
+    poster:
+      "https://regalcdn.azureedge.net/REG/ChosenSeason3Episodes12The/HO00013275/TV_SmallPosterImage/20221019-141141867.jpg",
+    trailer: "teK-LRkDvsU",
+    Director: "Dallas Jenkins",
+    Date: [
+      { value: "28.11", time: ["18:00"] },
+      { value: "29.11", time: ["18:00", "21:00"] },
+      { value: "30.11", time: ["19:30", "22:00"] },
+      { value: "01.12", time: ["20:30"] },
+      { value: "02.12", time: ["14:30", "16:30"] },
+      { value: "03.12", time: ["21:00"] },
+      { value: "04.12", time: ["21:30", "23:00"] },
+    ],
+  },
+  {
+    id: 12,
+    title: "Black Adam",
+    releasedate: "21 October 2022",
+    duration: 124,
+    overview:
+      "Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods–and imprisoned just as quickly–Black Adam (Johnson) is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.",
+    genre: ["Action"],
+    cast: "Pierce Brosnan, Dwayne Johnson, Aldis Hodge, Marwan Kenzari, Noah Centineo, Sarah Shahi, Quintessa Swindell",
+    poster:
+      "https://regalcdn.azureedge.net/REG/BlackAdam/HO00011065/TV_SmallPosterImage/20220926-151703754.jpg",
+    trailer: "iGuQlPYI5XM",
+    Director: "Jaume Collet-Serra",
+    Date: [
+      { value: "28.11", time: ["16:00"] },
+      { value: "29.11", time: ["16:00"] },
+      { value: "30.11", time: ["18:00"] },
+      { value: "01.12", time: ["18:00"] },
+      { value: "02.12", time: ["21:30"] },
+      { value: "03.12", time: ["20:00"] },
+      { value: "04.12", time: ["21:30"] },
     ],
   },
 ];
