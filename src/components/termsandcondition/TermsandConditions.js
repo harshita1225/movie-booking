@@ -7,8 +7,8 @@ const TermsandCoditions = () => {
   const { dispatch } = useContext(Context);
   return (
     <div className="section w-full h-screen flex justify-center items-center text-white absolute z-10">
-      <div className="terms w-[990px] h-[490px] border-2 border-black">
-        <div className="w-full h-[50px] text-[30px]  flex justify-between">
+      <div className="terms w-[920px] h-[370px] border-2 border-black">
+        <div className="w-full h-[45px] text-[30px]  flex justify-between">
           <p className="w-full px-4 text-center">Terms & Conditions</p>
           <p
             className=" flex items-center cursor-pointer"
@@ -23,12 +23,12 @@ const TermsandCoditions = () => {
         </div>
         <div className="mb-3 flex justify-center">
           <img
-            style={{ width: "100%", height: "120px" }}
+            style={{ width: "100%", height: "100px" }}
             src={cares}
             alt="cares"
           />
         </div>
-        <div className=" px-10">
+        <div className="px-5 text-[12px]">
           <ul>
             <li className="list-disc">
               Outside food & beverages are not allowed in the cinema premises.

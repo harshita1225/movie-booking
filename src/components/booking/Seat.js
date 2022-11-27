@@ -1,25 +1,33 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/Context";
 import TermsandCoditions from "../termsandcondition/TermsandConditions";
+import { MdArrowBack } from "react-icons/md";
+import { MdArrowForward } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const Seat = () => {
   const { state, dispatch } = useContext(Context);
+  const navigate = useNavigate();
+
   const row1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [showTerms, setShowTerms] = useState(false);
-  // const [blurbackground, setBlurBackground] = useState(false);
+  const [showTotal, setShowTotal] = useState(false);
+  const [selected, setSelected] = useState({ id: "", value: false });
 
-  useEffect(() => {
+  /*  useEffect(() => {
     setTimeout(() => {
       setShowTerms(true);
       dispatch({ type: "BLUR-BACKGROUND", payload: true });
-    }, 1000);
-  }, []);
+    }, 10000000);
+  }, []); */
+
+  console.log(state);
 
   return (
-    <div className="terms w-screen h-screen flex flex-col justify-center text-slate-500">
+    <div className="terms w-screen h-screen flex flex-col justify-center text-slate-500 relative">
       <div
-        className={`flex flex-col  items-center ${
-          state?.backgroundblur ? " blur-md" : "blur-none"
+        className={`flex flex-col  h-screen items-center ${
+          state?.backgroundblur ? " blur-sm" : "blur-none"
         }`}
       >
         <div className={` w-[980px] h-[250px] `}>
@@ -31,28 +39,28 @@ const Seat = () => {
                   height: "250px",
                   opacity: 1,
                   margin: "auto",
-
                   zIndex: -2,
                 }}
-                src="https://dubaitrippackages.files.wordpress.com/2017/11/2-imgdinosaurs_base.jpg"
+                src={state?.poster}
                 alt=""
               />
             </div>
-            <div className="absolute top-0 shadow-lg ">
+            <div className="absolute top-0 shadow-xl ">
               <img
                 style={{
-                  width: "700px",
+                  width: "300px",
                   height: "250px",
                   opacity: 0.9,
                   margin: "auto",
                 }}
-                src="https://dubaitrippackages.files.wordpress.com/2017/11/2-imgdinosaurs_base.jpg"
+                src={state?.poster}
                 alt=""
               />
             </div>
           </div>
-          <div className="relative bottom-10 text-[25px] text-center">
-            <p>Movie Date,DATE :TIME </p>
+          <div className="relative text-[14px] font-bold text-center  flex gap-3 ">
+            <p>{state?.title}</p> <p>{state?.date}/2022</p>{" "}
+            <p>{state?.time} </p>
           </div>
         </div>
         <div className="w-[980px] h-[50px] flex justify-center">
@@ -93,29 +101,52 @@ const Seat = () => {
         </div>
 
         <div>
-          <div className="text-center mt-5 mb-1">
+          <div className="text-center mt-5">
             {" "}
-            <p>CLASSIC ($8)</p>
+            <p>CLASSIC ($10)</p>
           </div>
-          <div className="w-full h-[80px] text-[16px] border-2">
+          <div className="w-full h-[80px] text-[16px]  mr-14 relative ">
             <div className="flex items-center">
-              <p className="mr-40 font-bold">A</p>
-              <div className="flex mr-20 gap-1">
+              <p className="mr-[157px] font-bold">A</p>
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      setSelected({ id: `A${i}`, value: true });
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `A${item}`,
+                        price: 10,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
                     }}
                     key={i}
                     id={`A${item}`}
-                    className=" seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        selected.id === i
+                          ? "border-2 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `A${item + 10}`,
+                        price: 10,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -127,11 +158,19 @@ const Seat = () => {
                 ))}
               </div>
             </div>
-            <div className="flex items-center relative bottom-[15px] right-[1px]">
-              <p className="mr-40 mt-1 font-bold">B</p>
-              <div className="flex mr-20 gap-1">
+            <div className="flex items-center relative bottom-[17px] right-[2px]">
+              <p className="mr-[158px] mt-1 font-bold">B</p>
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `B${item}`,
+                        price: 10,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -142,9 +181,17 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `B${item + 10}`,
+                        price: 10,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -156,11 +203,19 @@ const Seat = () => {
                 ))}
               </div>
             </div>
-            <div className="flex items-center relative bottom-[25px] right-[3px]">
-              <p className="mr-40 font-bold">C</p>
-              <div className="flex mr-20 gap-1">
+            <div className="flex items-center relative bottom-[29px] right-[5px]">
+              <p className="mr-[160px] font-bold">C</p>
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `C${item}`,
+                        price: 10,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -171,9 +226,17 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `C${item + 10}`,
+                        price: 10,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -189,16 +252,24 @@ const Seat = () => {
         </div>
 
         <div>
-          <div className="text-center my-1">
+          <div className="text-center mt-2">
             {" "}
-            <p>PRIME ($10)</p>
+            <p>PRIME ($12)</p>
           </div>
-          <div className="w-full h-[80px] text-[16px] mr-4 relative right-2">
-            <div className="flex items-center ">
-              <p className="mr-40 font-bold">D</p>
-              <div className="flex mr-20 gap-1">
+          <div className="w-full h-[80px] text-[16px]  mr-14 relative right-4">
+            <div className="flex items-center">
+              <p className="mr-[165px] font-bold">D</p>
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `D${item}`,
+                        price: 12,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -209,9 +280,17 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `D${item + 10}`,
+                        price: 12,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -223,11 +302,19 @@ const Seat = () => {
                 ))}
               </div>
             </div>
-            <div className="flex items-center relative bottom-[15px]">
-              <p className="mr-40 mt-1 font-bold">E</p>
-              <div className="flex mr-20 gap-1">
+            <div className="flex items-center mt-1 relative bottom-[20px] right-[2px]">
+              <p className="mr-[167px] mt-1 font-bold">E</p>
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `E${item}`,
+                        price: 12,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -238,9 +325,17 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `E${item + 10}`,
+                        price: 12,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -252,11 +347,19 @@ const Seat = () => {
                 ))}
               </div>
             </div>
-            <div className="flex items-center relative bottom-[25px] right-[1px]">
-              <p className="mr-40 font-bold">F</p>
-              <div className="flex mr-20 gap-1">
+            <div className="flex items-center relative bottom-[31px] right-[3px]">
+              <p className="mr-[167px] font-bold">F</p>
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `F${item}`,
+                        price: 12,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -267,9 +370,17 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `F${item + 10}`,
+                        price: 12,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -282,11 +393,19 @@ const Seat = () => {
               </div>
             </div>
 
-            <div className="flex items-center relative bottom-[38px] right-[4px]">
-              <p className="mr-40 font-bold">G</p>
-              <div className="flex mr-20 gap-1">
+            <div className="flex items-center relative bottom-[44px] right-[7px]">
+              <p className="mr-[168px] font-bold">G</p>
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `G${item}`,
+                        price: 12,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -297,75 +416,16 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
                     style={{
                       background:
-                        "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
+                        "linear-gradient(to top,#535353,#535353,#535353,gray,gray)",
                     }}
                     key={i}
                     id={`G${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
-                  ></div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center relative bottom-[50px] right-[6px]">
-              <p className="mr-40 font-bold">H</p>
-              <div className="flex mr-20 gap-1">
-                {row1.map((item, i) => (
-                  <div
-                    style={{
-                      background:
-                        "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
-                    }}
-                    key={i}
-                    id={`H${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
-                  ></div>
-                ))}
-              </div>{" "}
-              <div className="flex mr-20 gap-1">
-                {row1.map((item, i) => (
-                  <div
-                    style={{
-                      background:
-                        "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
-                    }}
-                    key={i}
-                    id={`H${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
-                  ></div>
-                ))}
-              </div>
-            </div>
-            <div className="flex items-center relative bottom-[63px] right-[2px]">
-              <p className="mr-40 font-bold">I</p>
-              <div className="flex mr-20 gap-1">
-                {row1.map((item, i) => (
-                  <div
-                    style={{
-                      background:
-                        "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
-                    }}
-                    key={i}
-                    id={`I${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
-                  ></div>
-                ))}
-              </div>{" "}
-              <div className="flex mr-20 gap-1">
-                {row1.map((item, i) => (
-                  <div
-                    style={{
-                      background:
-                        "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
-                    }}
-                    key={i}
-                    id={`I${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-not-allowed"
                   ></div>
                 ))}
               </div>
@@ -373,16 +433,24 @@ const Seat = () => {
           </div>
         </div>
         <div>
-          <div className="text-center mt-16 mb-1">
+          <div className="text-center mt-5">
             {" "}
             <p>SUPER ($15)</p>
           </div>
-          <div className="w-full h-[80px] text-[16px]  mr-14 relative right-2">
+          <div className="w-full h-[80px] text-[16px]  mr-14 relative right-8">
             <div className="flex items-center">
               <p className="mr-40 font-bold">J</p>
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `J${item}`,
+                        price: 15,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -393,9 +461,17 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `J${item + 10}`,
+                        price: 15,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -409,9 +485,17 @@ const Seat = () => {
             </div>
             <div className="flex items-center relative bottom-[16px] right-[4px]">
               <p className="mr-40 mt-1 font-bold">K</p>
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `K${item}`,
+                        price: 15,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -422,9 +506,17 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `K${item + 10}`,
+                        price: 15,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -438,9 +530,17 @@ const Seat = () => {
             </div>
             <div className="flex items-center relative bottom-[28px] right-[3px]">
               <p className="mr-40 font-bold">L</p>
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `L${item}`,
+                        price: 15,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -451,9 +551,17 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `L${item + 10}`,
+                        price: 15,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -468,9 +576,17 @@ const Seat = () => {
 
             <div className="flex items-center relative bottom-[42px] right-[8px]">
               <p className="mr-40 font-bold">M</p>
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `M${item}`,
+                        price: 15,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -481,9 +597,17 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `M${item + 10}`,
+                        price: 15,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -498,9 +622,17 @@ const Seat = () => {
 
             <div className="flex items-center relative bottom-[53px] right-[8px]">
               <p className="mr-40 font-bold">N</p>
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `N${item}`,
+                        price: 15,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -511,9 +643,17 @@ const Seat = () => {
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `N${item + 10}`,
+                        price: 15,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -527,22 +667,30 @@ const Seat = () => {
             </div>
             <div className="flex items-center relative bottom-[64px] right-[10px]">
               <p className="mr-40 font-bold">O</p>
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
                     style={{
                       background:
-                        "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
+                        "linear-gradient(to top,#535353,#535353,#535353,gray,gray)",
                     }}
                     key={i}
                     id={`O${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-not-allowed"
                   ></div>
                 ))}
               </div>{" "}
-              <div className="flex mr-20 gap-1">
+              <div className="flex mr-10 gap-1">
                 {row1.map((item, i) => (
                   <div
+                    onClick={() => {
+                      setShowTotal(true);
+                      dispatch({
+                        type: "SELECTED-SEAT",
+                        payload: `O${item + 10}`,
+                        price: 8,
+                      });
+                    }}
                     style={{
                       background:
                         "linear-gradient(to top,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#c5c5c5,#eee,#fff)",
@@ -556,17 +704,72 @@ const Seat = () => {
             </div>
           </div>
         </div>
+
+        {!showTotal ? (
+          <button
+            onClick={() => {
+              dispatch({ type: "RESET" });
+              navigate(-1);
+            }}
+            className="bg-orange-500 p-2 mt-20 text-white rounded-xl"
+          >
+            Go Back
+          </button>
+        ) : (
+          <div className="w-screen h-[80px] fixed bottom-0 bg-orange-500 text-white mt-20  px-20 mx-auto flex items-center">
+            <div className="w-full flex justify-evenly px-5  items-center ">
+              <MdArrowBack
+                onClick={() => {
+                  dispatch({ type: "RESET" });
+                  navigate(-1);
+                }}
+                style={{
+                  fontSize: "30px",
+                  background: "rgb(51 65 85)",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                }}
+              />
+              <div className="flex gap-5 items-center">
+                {" "}
+                <span className="text-[18px] font-bold">SEATS:</span>
+                {state?.selectedseat?.map((seat, idx) => (
+                  <div
+                    style={{
+                      clipPath:
+                        "polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%)",
+                    }}
+                    className="w-[50px] h-[25px] bg-slate-700 text-slate-100  border-2 border-black text-center font-semibold tracking-[2px]"
+                    key={idx}
+                  >
+                    {" "}
+                    {seat}
+                  </div>
+                ))}
+              </div>
+              <div
+                style={{ fontFamily: "inherit" }}
+                className=" text-white font-bold flex items-center"
+              >
+                <p className="font-bold text-[26px] flex items-center">
+                  <span className="text-[18px]">TOTAL: </span> ${" "}
+                  {state?.priceArray?.reduce((acc, curr) => (acc += curr), 0)}
+                </p>
+              </div>
+              <MdArrowForward
+                onClick={() => navigate("/confirmation")}
+                style={{
+                  fontSize: "30px",
+                  background: "rgb(51 65 85)",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                }}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
-      <div className="w-full  mt-[100px] h-[100px] bg-black px-20">
-        <div>
-          <div>
-            <button className="bg-orange-500 p-3 text-white rounded-xl">
-              Go Back
-            </button>
-          </div>
-        </div>
-      </div>
       {showTerms && <TermsandCoditions />}
     </div>
   );

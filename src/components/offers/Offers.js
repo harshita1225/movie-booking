@@ -4,48 +4,35 @@ const Offers = () => {
   const [addFood, setAddFood] = useState([]);
   console.log(addFood);
   return (
-    <div className="bg-black">
-      <nav className="bg-black border-b-2 border-orange-500">
+    <div style={{ fontFamily: "inherit" }} className="bg-zinc-900 ">
+      <nav className="bg-zinc-900 border-b-2 border-orange-500">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"></div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  <a
-                    href="#"
-                    className=" text-white hover:text-orange-500 px-3 py-2 rounded-md text-base font-medium"
+                  <p
+                    className=" text-white hover:text-orange-500 cursor-pointer px-3 py-2 rounded-md "
                     aria-current="page"
                   >
                     COMBO
-                  </a>
-                  <a
-                    href="#"
-                    className="text-white hover:text-orange-500  px-3 py-2 rounded-md text-base font-medium"
-                  >
+                  </p>
+                  <p className="text-white hover:text-orange-500 cursor-pointer  px-3 py-2 rounded-md ">
                     PIZZA
-                  </a>
+                  </p>
 
-                  <a
-                    href="#"
-                    className="text-white hover:text-orange-500 px-3 py-2 rounded-md text-base font-medium"
-                  >
+                  <p className="text-white hover:text-orange-500 cursor-pointer px-3 py-2 rounded-md ">
                     NACHOS
-                  </a>
+                  </p>
 
-                  <a
-                    href="#"
-                    className="text-white hover:text-orange-500  px-3 py-2 rounded-md text-base font-medium"
-                  >
+                  <p className="text-white hover:text-orange-500 cursor-pointer  px-3 py-2 rounded-md">
                     POPCORN
-                  </a>
+                  </p>
 
-                  <a
-                    href="#"
-                    className="text-white hover:text-orange-500  px-3 py-2 rounded-md text-base font-medium"
-                  >
+                  <p className="text-white hover:text-orange-500  cursor-pointer px-3 py-2 rounded-md">
                     PEPSI
-                  </a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -53,24 +40,24 @@ const Offers = () => {
         </div>
       </nav>
 
-      <div className="grid grid-cols-5 gap-6 mt-8 mx-4 mb-8">
-        <div className=" w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div className=" mx-auto  grid grid-cols-4 gap-6 mt-8 w-[880px] mb-8">
+        <div className=" w-full w-[200px] h-[230px] bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
           <div className="product">
             <img
-              style={{ height: "226px" }}
+              style={{ height: "160px" }}
               className=" lazy rounded-t-lg"
               src="https://originserver-static1-uat.pvrcinemas.com/newweb/fnb/HO00120790.jpg"
               alt="product image"
             />
           </div>
 
-          <div className=" px-10 pb-5 bg-slate-100 pt-5">
-            <h5 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+          <div className=" flex flex-col m-1">
+            <h5 className=" w-full text-center font-bold text-[14px] dark:text-white">
               2x Pepsi 0,5l Popcorn, large
             </h5>
-            <div className="flex items-center mt-2.5 mb-5"></div>
-            <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-gray-900 dark:text-white">
+
+            <div className="flex items-center justify-around mt-1">
+              <span className="text-[16px] font-bold text-gray-900 dark:text-white">
                 7,90 €
               </span>
               <button
@@ -80,14 +67,14 @@ const Offers = () => {
                     "https://originserver-static1-uat.pvrcinemas.com/newweb/fnb/HO00120790.jpg",
                   ])
                 }
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-[14px] p-2 text-center dark:bg-orange-500 dark:hover:bg-orange-600 dark:focus:ring-oramge-700"
               >
                 Add to cart
               </button>
             </div>
           </div>
         </div>
-        <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full w-[200px] bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
             <img
               style={{ height: "226px" }}

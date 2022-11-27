@@ -8,6 +8,7 @@ import TermsandConditions from "./components/termsandcondition/TermsandCondition
 import ConfirmationPage from "./components/booking/ConfirmationPage";
 import "./App.css";
 import Offers from "./components/offers/Offers";
+import LastPage from "./components/booking/LastPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/terms" element={<TermsandConditions />} />
       <Route path="/confirmation" element={<ConfirmationPage />} />
       <Route path="/offers" element={<Offers />} />
+      <Route path="/lastpage" element={<LastPage />} />
     </Routes>
   );
 }

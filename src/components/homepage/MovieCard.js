@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import AspectRatio from "@mui/joy/AspectRatio";
-
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
 import Chip from "@mui/joy/Chip";
-
 import Typography from "@mui/joy/Typography";
 import Link from "@mui/joy/Link";
+import { Context } from "../../context/Context";
+import { oldMovies } from "../../components/localdata/LocalData";
+import { useNavigate } from "react-router-dom";
 
 export default function DribbbleShotold({ item }) {
+  const navigate = useNavigate();
+  const { dispatch } = useContext(Context);
+  /*  console.log("this is item", oldMovies[0]?.title);
+  useEffect(() => {
+    dispatch({
+      type: "SELECTED-MOVIE",
+      payload: oldMovies[`${item.id}`]?.title,
+    });
+  }, [item, dispatch]); */
+
   return (
     <Card
       sx={{
@@ -73,12 +84,12 @@ export default function DribbbleShotold({ item }) {
                   href={`/home/${item.id}`}
                   underline="none"
                   sx={{
-                    color: "black",
-                    padding: "2px",
+                    padding: "3px",
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                     display: "block",
-                    background: "white",
+                    color: "white",
+                    background: "rgb(249 115 22)",
                   }}
                 >
                   Show info
@@ -92,20 +103,29 @@ export default function DribbbleShotold({ item }) {
                   fontSize: "sm",
                 }}
               >
-                <Link
-                  href={`/datetime/${item.id}`}
-                  underline="none"
-                  sx={{
-                    color: "black",
-                    padding: "2px",
+                <button
+                  onClick={() => {
+                    navigate(`/datetime/${item.id}`);
+                    dispatch({
+                      type: "SELECTED-MOVIE",
+                      title: item.title,
+                      genre: item.genre[0],
+                      poster: item.poster,
+                    });
+                  }}
+                  // href={`/datetime/${item.id}`}
+
+                  style={{
+                    padding: "3px",
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                     display: "block",
-                    background: "white",
+                    color: "white",
+                    background: "rgb(249 115 22)",
                   }}
                 >
                   Book Tickets
-                </Link>
+                </button>
               </Typography>
             </Box>
           </Box>

@@ -4,11 +4,14 @@ import { createContext, useReducer } from "react";
 export const Context = createContext();
 
 const initialState = {
-  genre: "",
+  title: "",
   date: "",
+  year: "2022",
   time: "",
   jump: "#MovieContainerTop",
   backgroundblur: false,
+  selectedseat: [],
+  priceArray: [],
 };
 
 const reducer = (state, action) => {
@@ -19,6 +22,21 @@ const reducer = (state, action) => {
       return { ...state, time: action.payload };
     case "BLUR-BACKGROUND":
       return { ...state, backgroundblur: action.payload };
+    case "SELECTED-SEAT":
+      return {
+        ...state,
+        selectedseat: [...state.selectedseat, action.payload],
+        priceArray: [...state.priceArray, action.price],
+      };
+    case "SELECTED-MOVIE":
+      return {
+        ...state,
+        title: action.title,
+        genre: action.genre,
+        poster: action.poster,
+      };
+    case "RESET":
+      return { ...state, date: "", time: "", selectedseat: [], priceArray: [] };
     default:
       return;
   }

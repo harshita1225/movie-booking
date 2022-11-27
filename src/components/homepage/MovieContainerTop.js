@@ -34,19 +34,15 @@ const MovieContainerTop = () => {
     <div className="flex flex-col gap-1 w-[1300px] mx-auto">
       <div className="text-white text-[22px] tracking-wider rounded-full  flex items-center justify-between px-3 mt-[75px] mb-2">
         <div>NOW SHOWING</div>
-        <div className="bg-orange-500 text-white">
+        <div className="bg-orange-500 text-white rounded-xl">
           <FormControl
             sx={{
               minWidth: 100,
               height: 55,
               zIndex: "5",
-              color: "white",
             }}
           >
-            <InputLabel
-              sx={{ color: "white", background: "#F97316" }}
-              id="demo-simple-select-autowidth-label"
-            >
+            <InputLabel id="demo-simple-select-autowidth-label">
               Genre
             </InputLabel>
 
