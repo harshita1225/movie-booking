@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaDirections } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../../context/Context";
 import MapMovieTheater from "./MapMovieTheater";
 
 const ConfirmationPage = () => {
-  let [currDate, setCurrDate] = useState(new Date().toDateString());
+  const { state, dispatch } = useContext(Context);
+  let [currDate, setCurrDate] = useState(new Date().toLocaleString());
   let [currTime, setCurrTime] = useState("");
   let [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let options = { hour12: false };
     //console.log(new Date().toLocaleString("en-US", options).slice(-9));
-    setCurrDate(currDate);
+    setCurrDate(currDate.slice(0, 10));
     setCurrTime(new Date().toLocaleString("en-US", options).slice(-9));
   }, [currDate]);
 
@@ -32,12 +36,14 @@ const ConfirmationPage = () => {
                     position: "relative",
                     top: -30,
                   }}
-                  src="https://static.kino.de/wp-content/uploads/2022/06/RZ_TheMenu_Poster_Teaser_Chef_Online.jpg"
+                  src={state?.poster}
                   alt="poster"
                 />
                 <div className="flex flex-col ">
-                  <p className="text-[26px] text-orange-500">The Menu</p>
-                  <p className="text-[12px] text-slate-400">English, 2D</p>
+                  <p className="text-[26px] text-orange-500">{state?.title}</p>
+                  <p className="text-[12px] text-slate-400">
+                    English,{state?.genre}
+                  </p>
                 </div>
               </div>
 
@@ -54,12 +60,14 @@ const ConfirmationPage = () => {
                   <p className="text-slate-400 font-light text-[14px]">
                     TICKETS
                   </p>
-                  <p className="text-white font-semi-bold">3</p>
+                  <p className="text-white font-semi-bold">
+                    {state?.selectedseat.length}
+                  </p>
                 </div>
                 <div className="flex flex-col">
                   <p className="text-slate-400 font-light text-[14px]">SEAT</p>
                   <p className="text-white font-semi-bold text-[14px]">
-                    Q15 Q16 Q17
+                    {state?.selectedseat.join(",")}
                   </p>
                 </div>
               </div>
@@ -72,7 +80,7 @@ const ConfirmationPage = () => {
                 DATE & TIME
               </p>
               <p className="font-light  text-white text-[14px]">
-                SATURDAY, 29 NOV,2022 | 11:30{" "}
+                {state?.date}/{state?.year} | {state?.time}
               </p>
             </div>
             <div className="flex flex-col mb-5">
@@ -127,22 +135,60 @@ const ConfirmationPage = () => {
                 src="https://upload.wikimedia.org/wikipedia/commons/3/37/MITC2013_QR_Code.jpg"
                 alt="barcode"
               />
-              {/* <p>40.74081488402601, -73.98799908235267</p> */}
             </div>
           </div>
           <div className="my-5">
             <div className="flex justify-between text-[14px]">
-              <p className=" text-white font-light">Tickets (3)</p>
-              <p className="text-white font-semi-bold">$54,99</p>
+              <p className=" text-white font-light">
+                Tickets ({state?.selectedseat.length})
+              </p>
+
+              <p className="text-white font-semi-bold">
+                $
+                {state?.priceArray
+                  .reduce((acc, curr) => (acc += curr), 0)
+                  .toFixed(2)}
+              </p>
+            </div>
+            <div className="flex justify-between text-[14px]">
+              <p className=" text-white font-light">Food Fees</p>
+              <p className="text-white font-semi-bold">
+                $
+                {state?.foodpriceArray
+                  .reduce((acc, curr) => (acc += curr), 0)
+                  .toFixed(2)}
+              </p>
             </div>
             <div className="flex justify-between text-[14px]">
               <p className=" text-white font-light">Convenience Fees</p>
-              <p className="text-white font-semi-bold">$1,99</p>
+              <p className="text-white font-semi-bold">$1.99</p>
             </div>
           </div>
           <div className="flex  text-orange-500 text-[16px] font-bold justify-between">
             <p>Total</p>
-            <p>$55,54</p>
+            <p>
+              {" "}
+              $
+              {(
+                +state?.priceArray.reduce((acc, curr) => (acc += curr), 1.99) +
+                +state?.foodpriceArray.reduce((acc, curr) => (acc += curr), 0)
+              ).toFixed(2)}
+            </p>
+          </div>
+
+          <div className="bg-orange-500 text-white px-3 py-2 rounded-md mt-10 text-center cursor-pointer">
+            <button
+              onClick={() => {
+                dispatch({
+                  type: "MY-BOOKINGS",
+                  currDate: currDate,
+                  currTime: currTime,
+                });
+                navigate("/bookinghistory");
+              }}
+            >
+              Show My Bookings{" "}
+            </button>
           </div>
         </div>
         {showModal && (

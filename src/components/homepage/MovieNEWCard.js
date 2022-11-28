@@ -72,11 +72,12 @@ export default function DribbbleShot({ item }) {
                   underline="none"
                   sx={{
                     color: "black",
-                    padding: "2px",
+                    padding: "3px",
                     textOverflow: "ellipsis",
                     overflow: "hidden",
                     display: "block",
-                    background: "white",
+                    color: "white",
+                    background: "rgb(249,115,22)",
                   }}
                 >
                   Show info

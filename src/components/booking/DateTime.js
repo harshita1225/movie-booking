@@ -11,6 +11,7 @@ import paymentoptions from "../images/payment-method-background.png";
 
 const DateTime = () => {
   const { state, dispatch } = useContext(Context);
+  console.log(state);
   const { singledate } = useParams();
   const navigate = useNavigate();
 
@@ -35,9 +36,9 @@ const DateTime = () => {
   return (
     <div className="bg-zinc-900 pb-20">
       <Header />
-      <div className="w-[1040px] h-[611px] border-2 mx-auto mt-20 bg-zinc-900">
+      <div className="w-[1040px] h-[611px] mx-auto mt-20 bg-zinc-900">
         <div className="flex justify-center mb-10 mt-5">
-          <p className="text-[2rem] text-slate-700 bg-orange-500 p-2">
+          <p className="text-[2rem] text-slate-700 bg-orange-500 p-2 rounded-xl">
             <FaCalendarDay />
           </p>
         </div>
@@ -55,7 +56,7 @@ const DateTime = () => {
           >
             <p className="text-[12px]">HEUTE</p>
             <p id="one" className="text-[30px]">
-              28.11
+              11/28
             </p>
           </div>
           <div
@@ -70,7 +71,7 @@ const DateTime = () => {
             }   `}
           >
             <p className="text-[12px]">TUESDAY</p>
-            <p className="text-[30px]">29.11</p>
+            <p className="text-[30px]">11/29</p>
           </div>
           <div
             onClick={(e) => {
@@ -84,7 +85,7 @@ const DateTime = () => {
             }   `}
           >
             <p className="text-[12px]">WEDNESDAY</p>
-            <p className="text-[30px]">30.11</p>
+            <p className="text-[30px]">11/30</p>
           </div>
           <div
             onClick={(e) => {
@@ -98,7 +99,7 @@ const DateTime = () => {
             }   `}
           >
             <p className="text-[12px]">THURSDAY</p>
-            <p className="text-[30px]">01.12</p>
+            <p className="text-[30px]">12/01</p>
           </div>
           <div
             onClick={(e) => {
@@ -112,7 +113,7 @@ const DateTime = () => {
             }   `}
           >
             <p className="text-[12px]">FRIDAY</p>
-            <p className="text-[30px]">02.12</p>
+            <p className="text-[30px]">12/02</p>
           </div>
           <div
             onClick={(e) => {
@@ -126,7 +127,7 @@ const DateTime = () => {
             }   `}
           >
             <p className="text-[12px]">SATURDAY</p>
-            <p className="text-[30px]">03.12</p>
+            <p className="text-[30px]">12/03</p>
           </div>
           <div
             onClick={(e) => {
@@ -140,20 +141,20 @@ const DateTime = () => {
             }   `}
           >
             <p className="text-[12px]">SUNDAY</p>
-            <p className="text-[30px]">04.12</p>
+            <p className="text-[30px]">12/04</p>
           </div>
         </div>
 
         <hr className="m-10" />
         <div className="w-[1040px]">
           <div className="flex justify-center mb-10">
-            <p className="text-[2rem] text-slate-700  bg-orange-500 p-2">
+            <p className="text-[2rem] text-slate-700  bg-orange-500 p-2 rounded-xl">
               <MdOutlineAccessTimeFilled />
             </p>
           </div>
           <div className="w-full h-[90px] flex gap-4 justify-center mb-10">
             {filteredDate?.Date?.map((item) => {
-              if (+item.value === +state?.date) {
+              if (item.value === state?.date) {
                 return item.time;
               }
             })?.map((el, i) =>
@@ -190,7 +191,7 @@ const DateTime = () => {
             onClick={() => navigate("/seats")}
             className="w-full flex justify-center mt-20"
           >
-            <button className="border-orange-500 border-4 text-orange-500 bg-zinc-900 w-[246px] h-[53px] text-[28px] font-[300] hover:font-[500]">
+            <button className="bg-orange-500 rounded-xl text-white w-[200px] h-[53px] text-[25px] font-light hover:font-bold">
               NEXT
             </button>
           </div>
