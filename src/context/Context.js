@@ -12,6 +12,10 @@ const initialState = {
   backgroundblur: false,
   selectedseat: [],
   priceArray: [],
+  foodpriceArray: [],
+  booked: {},
+  currDate: "",
+  currTime: "",
 };
 
 const reducer = (state, action) => {
@@ -35,8 +39,17 @@ const reducer = (state, action) => {
         genre: action.genre,
         poster: action.poster,
       };
+    case "OFFERS":
+      return {
+        ...state,
+        foodpriceArray: [...state.foodpriceArray, action.offerprice],
+      };
+
     case "RESET":
       return { ...state, date: "", time: "", selectedseat: [], priceArray: [] };
+
+    case "MY-BOOKINGS":
+      return { ...state, currDate: action.currDate, currTime: action.currTime };
     default:
       return;
   }

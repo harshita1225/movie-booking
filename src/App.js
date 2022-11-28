@@ -9,6 +9,7 @@ import ConfirmationPage from "./components/booking/ConfirmationPage";
 import "./App.css";
 import Offers from "./components/offers/Offers";
 import LastPage from "./components/booking/LastPage";
+import BookingHistory from "./components/login/BookingHistory";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path="/confirmation" element={<ConfirmationPage />} />
       <Route path="/offers" element={<Offers />} />
       <Route path="/lastpage" element={<LastPage />} />
+      <Route path="/bookinghistory" element={<BookingHistory />} />
     </Routes>
   );
 }

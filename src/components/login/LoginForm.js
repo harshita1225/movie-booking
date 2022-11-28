@@ -133,10 +133,7 @@ const LoginForm = () => {
 
   return (
     <div>
-      <div>
-        <div className="title">Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
-      </div>
+      <div>{isSubmitted ? navigate("/bookinghistory") : renderForm}</div>
     </div>
   );
 };

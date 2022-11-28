@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaDirections } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../../context/Context";
 import MapMovieTheater from "./MapMovieTheater";
 
 const ConfirmationPage = () => {
-  const { state } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   let [currDate, setCurrDate] = useState(new Date().toLocaleString());
   let [currTime, setCurrTime] = useState("");
   let [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let options = { hour12: false };
@@ -138,15 +140,28 @@ const ConfirmationPage = () => {
           <div className="my-5">
             <div className="flex justify-between text-[14px]">
               <p className=" text-white font-light">
-                Tickets {state?.selectedseat.length}
+                Tickets ({state?.selectedseat.length})
               </p>
+
               <p className="text-white font-semi-bold">
-                ${state?.priceArray.reduce((acc, curr) => (acc += curr), 0)}
+                $
+                {state?.priceArray
+                  .reduce((acc, curr) => (acc += curr), 0)
+                  .toFixed(2)}
+              </p>
+            </div>
+            <div className="flex justify-between text-[14px]">
+              <p className=" text-white font-light">Food Fees</p>
+              <p className="text-white font-semi-bold">
+                $
+                {state?.foodpriceArray
+                  .reduce((acc, curr) => (acc += curr), 0)
+                  .toFixed(2)}
               </p>
             </div>
             <div className="flex justify-between text-[14px]">
               <p className=" text-white font-light">Convenience Fees</p>
-              <p className="text-white font-semi-bold">$1,99</p>
+              <p className="text-white font-semi-bold">$1.99</p>
             </div>
           </div>
           <div className="flex  text-orange-500 text-[16px] font-bold justify-between">
@@ -154,10 +169,26 @@ const ConfirmationPage = () => {
             <p>
               {" "}
               $
-              {state?.priceArray
-                .reduce((acc, curr) => (acc += curr), 1.99)
-                .toFixed(2)}
+              {(
+                +state?.priceArray.reduce((acc, curr) => (acc += curr), 1.99) +
+                +state?.foodpriceArray.reduce((acc, curr) => (acc += curr), 0)
+              ).toFixed(2)}
             </p>
+          </div>
+
+          <div className="bg-orange-500 text-white px-3 py-2 rounded-md mt-10 text-center cursor-pointer">
+            <button
+              onClick={() => {
+                dispatch({
+                  type: "MY-BOOKINGS",
+                  currDate: currDate,
+                  currTime: currTime,
+                });
+                navigate("/bookinghistory");
+              }}
+            >
+              Show My Bookings{" "}
+            </button>
           </div>
         </div>
         {showModal && (

@@ -4,6 +4,7 @@ import TermsandCoditions from "../termsandcondition/TermsandConditions";
 import { MdArrowBack } from "react-icons/md";
 import { MdArrowForward } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { BsFillArrowUpCircleFill } from "react-icons/bs";
 
 const Seat = () => {
   const { state, dispatch } = useContext(Context);
@@ -12,16 +13,22 @@ const Seat = () => {
   const row1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [showTerms, setShowTerms] = useState(false);
   const [showTotal, setShowTotal] = useState(false);
-  const [selected, setSelected] = useState({ id: "", value: false });
+  const [selected, setSelected] = useState({ id: "" });
 
-  /*  useEffect(() => {
-    setTimeout(() => {
+  useEffect(() => {
+    const timeoutID = setTimeout(() => {
       setShowTerms(true);
       dispatch({ type: "BLUR-BACKGROUND", payload: true });
-    }, 10000000);
-  }, []); */
+    }, 1000);
+    return () => {
+      setShowTerms(false);
+      // 👇️ clear timeout when component unmounts
+      clearTimeout(timeoutID);
+    };
+  }, []);
 
   console.log(state);
+  console.log(selected);
 
   return (
     <div className="terms w-screen h-screen flex flex-col justify-center text-slate-500 relative">
@@ -63,7 +70,11 @@ const Seat = () => {
             <p>{state?.time} </p>
           </div>
         </div>
-        <div className="w-[980px] h-[50px] flex justify-center">
+        <div className="w-[980px] h-[70px] flex justify-center gap-2 items-start mt-2">
+          <p className="text-[20px]">
+            {" "}
+            <BsFillArrowUpCircleFill />{" "}
+          </p>
           <p>SCREEN THIS WAY</p>
         </div>
 
@@ -81,8 +92,7 @@ const Seat = () => {
           <div className="text-16px flex items-center gap-3">
             <div
               style={{
-                background:
-                  "linear-gradient(to right bottom, rgb(202, 138, 4), rgb(220, 38, 38)",
+                background: "linear-gradient(to top,#dc6601,orange)",
               }}
               className="w-[22.11px] h-[29.62px] rounded-md"
             ></div>
@@ -113,7 +123,6 @@ const Seat = () => {
                   <div
                     onClick={() => {
                       setShowTotal(true);
-                      setSelected({ id: `A${i}`, value: true });
                       dispatch({
                         type: "SELECTED-SEAT",
                         payload: `A${item}`,
@@ -128,8 +137,8 @@ const Seat = () => {
                     id={`A${item}`}
                     className={`seat w-[22.11px] h-[29.62px] rounded-md  
                       ${
-                        selected.id === i
-                          ? "border-2 border-orange-500"
+                        state?.selectedseat.includes(`A${i + 1}`)
+                          ? "border-4 border-orange-500"
                           : "hover:-translate-y-1.5 cursor-pointer"
                       }
                     `}
@@ -153,7 +162,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`A${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`A${i + 11}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>
@@ -177,7 +192,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`B${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md  hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                    ${
+                      state?.selectedseat.includes(`B${i + 1}`)
+                        ? "border-4 border-orange-500"
+                        : "hover:-translate-y-1.5 cursor-pointer"
+                    }
+                  `}
                   ></div>
                 ))}
               </div>{" "}
@@ -198,7 +219,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`B${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`B${i + 11}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>
@@ -222,7 +249,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`C${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`C${i + 1}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>{" "}
@@ -243,7 +276,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`C${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`C${i + 11}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>
@@ -276,7 +315,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`D${item}`}
-                    className=" seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`D${i + 1}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>{" "}
@@ -297,7 +342,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`D${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`D${i + 11}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>
@@ -321,7 +372,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`E${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md  hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`E${i + 1}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>{" "}
@@ -342,7 +399,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`E${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`E${i + 11}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>
@@ -366,7 +429,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`F${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                    ${
+                      state?.selectedseat.includes(`F${i + 1}`)
+                        ? "border-4 border-orange-500"
+                        : "hover:-translate-y-1.5 cursor-pointer"
+                    }
+                  `}
                   ></div>
                 ))}
               </div>{" "}
@@ -387,7 +456,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`F${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`F${i + 11}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>
@@ -412,7 +487,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`G${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                    ${
+                      state?.selectedseat.includes(`G${i + 1}`)
+                        ? "border-4 border-orange-500"
+                        : "hover:-translate-y-1.5 cursor-pointer"
+                    }
+                  `}
                   ></div>
                 ))}
               </div>{" "}
@@ -425,7 +506,7 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`G${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-not-allowed"
+                    className="w-[22.11px] h-[29.62px] rounded-md  cursor-not-allowed"
                   ></div>
                 ))}
               </div>
@@ -457,7 +538,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`J${item}`}
-                    className=" seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                    ${
+                      state?.selectedseat.includes(`J${i + 1}`)
+                        ? "border-4 border-orange-500"
+                        : "hover:-translate-y-1.5 cursor-pointer"
+                    }
+                  `}
                   ></div>
                 ))}
               </div>{" "}
@@ -478,7 +565,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`J${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`J${i + 11}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>
@@ -502,7 +595,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`K${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md  hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                    ${
+                      state?.selectedseat.includes(`K${i + 1}`)
+                        ? "border-4 border-orange-500"
+                        : "hover:-translate-y-1.5 cursor-pointer"
+                    }
+                  `}
                   ></div>
                 ))}
               </div>{" "}
@@ -523,7 +622,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`K${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                    ${
+                      state?.selectedseat.includes(`K${i + 11}`)
+                        ? "border-4 border-orange-500"
+                        : "hover:-translate-y-1.5 cursor-pointer"
+                    }
+                  `}
                   ></div>
                 ))}
               </div>
@@ -547,7 +652,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`L${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`L${i + 1}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>{" "}
@@ -568,7 +679,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`L${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`L${i + 11}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>
@@ -593,7 +710,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`M${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                    ${
+                      state?.selectedseat.includes(`M${i + 1}`)
+                        ? "border-4 border-orange-500"
+                        : "hover:-translate-y-1.5 cursor-pointer"
+                    }
+                  `}
                   ></div>
                 ))}
               </div>{" "}
@@ -614,7 +737,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`M${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                      ${
+                        state?.selectedseat.includes(`M${i + 11}`)
+                          ? "border-4 border-orange-500"
+                          : "hover:-translate-y-1.5 cursor-pointer"
+                      }
+                    `}
                   ></div>
                 ))}
               </div>
@@ -639,7 +768,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`N${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                    ${
+                      state?.selectedseat.includes(`N${i + 1}`)
+                        ? "border-4 border-orange-500"
+                        : "hover:-translate-y-1.5 cursor-pointer"
+                    }
+                  `}
                   ></div>
                 ))}
               </div>{" "}
@@ -660,7 +795,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`N${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                    ${
+                      state?.selectedseat.includes(`N${i + 11}`)
+                        ? "border-4 border-orange-500"
+                        : "hover:-translate-y-1.5 cursor-pointer"
+                    }
+                  `}
                   ></div>
                 ))}
               </div>
@@ -676,7 +817,7 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`O${item}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-not-allowed"
+                    className="w-[22.11px] h-[29.62px] rounded-md  cursor-not-allowed"
                   ></div>
                 ))}
               </div>{" "}
@@ -697,7 +838,13 @@ const Seat = () => {
                     }}
                     key={i}
                     id={`O${item + 10}`}
-                    className="seat w-[22.11px] h-[29.62px] rounded-md hover:-translate-y-1.5 cursor-pointer"
+                    className={`seat w-[22.11px] h-[29.62px] rounded-md  
+                    ${
+                      state?.selectedseat.includes(`O${i + 11}`)
+                        ? "border-4 border-orange-500"
+                        : "hover:-translate-y-1.5 cursor-pointer"
+                    }
+                  `}
                   ></div>
                 ))}
               </div>
@@ -757,7 +904,7 @@ const Seat = () => {
                 </p>
               </div>
               <MdArrowForward
-                onClick={() => navigate("/confirmation")}
+                onClick={() => navigate("/offers")}
                 style={{
                   fontSize: "30px",
                   background: "rgb(51 65 85)",

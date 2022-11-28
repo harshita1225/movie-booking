@@ -16,15 +16,11 @@ body {
   ) !important;
 } */
 
-/* .seat:hover {
-  background: linear-gradient(
-    to top,
-    rgb(254, 240, 138),
-    rgb(250, 204, 21),
-    rgb(161, 98, 7)
-  ) !important;
-} */
+.seat:hover {
+  background: linear-gradient(to bottom, #dc6601, orange) !important;
+}
 
+/*
 .seat:hover {
   background: linear-gradient(
     to right bottom,
@@ -32,7 +28,7 @@ body {
     rgb(220, 38, 38)
   ) !important;
 }
-
+*/
 .terms {
   background: #191919;
 }
