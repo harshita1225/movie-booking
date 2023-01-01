@@ -1,7 +1,7 @@
 {
   "name": "movie-booking",
   "version": "0.1.0",
-  "homepage": "https://harshita1225/movie-booking",
+  "homepage": "https://harshita1225.github.io/movie-booking/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
