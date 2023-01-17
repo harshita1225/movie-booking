@@ -2,7 +2,7 @@
 
 ## Link
 
-- Live Site URL: []()
+- Live Site URL: [https://harshita1225.github.io/movie-booking/](https://harshita1225.github.io/movie-booking/)
 
 ## Table of contents
 
