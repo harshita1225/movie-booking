@@ -14,6 +14,7 @@ import BookingHistory from "./components/login/BookingHistory";
 function App() {
   return (
     <Routes>
+      <Route path="/movie-booking" element={<HomePage />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/home/:singlemovie" element={<SingleMoviePage />} />
       <Route path="/" element={<HomePage />} />
